@@ -57,40 +57,40 @@ const morseToLatin = {
 }
 
 function getLatinCharacterList(texte) {
-    const createTable = texte.split("");
-    return createTable;
+    const separationLatin = texte.split("");
+    return separationLatin;
 }
 
 
-function translateLatinCharacter(helloWorld) {
-    const resultat = [];
-    for (i = 0; i < helloWorld.length; i++) {
-        resultat.push(latinToMorse[helloWorld[i]]);
-    }
-    return resultat;
-}
-
-function encode(texte) {
-    let helloWorld = getLatinCharacterList(texte);
+function translateLatinCharacter(mot) {
+    const helloWorld = getLatinCharacterList(mot);
     console.log(helloWorld);
-    let traduction = translateLatinCharacter(helloWorld);
-    console.log(traduction);
+    const latinTable = [];
+    for (i = 0; i < helloWorld.length; i++) {
+        latinTable.push(latinToMorse[helloWorld[i]]);
+    }
+    return latinTable;
 }
 
-encode("BONJOUR");
+const traduction = translateLatinCharacter("HELLO/WORLD");
+console.log(traduction);
+
+
+
+
 
 function getMorseCharacterList(texte) {
     const morseWord = texte.split(" ");
     return morseWord;
 }
 
-const separationMorse = getMorseCharacterList("- --- -- .- - .");
-console.log(separationMorse);
 
 function translateMorseCharacter(mot) {
+    const separationMorse = getMorseCharacterList(mot);
+    console.log(separationMorse);
     const morseTable = [];
-    for (i = 0; i < mot.length; i++) {
-        resultat.push(morseToLatin[mot[i]]);
+    for (i = 0; i < separationMorse.length; i++) {
+        morseTable.push(morseToLatin[separationMorse[i]]);
     }
     return morseTable;
 }
