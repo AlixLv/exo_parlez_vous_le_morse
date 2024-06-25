@@ -57,22 +57,29 @@ const morseToLatin = {
 }
 
 function getLatinCharacterList(texte) {
-    const separationLatin = texte.split("");
+    let separationLatin = texte.split("");
     return separationLatin;
 }
 
 
 function translateLatinCharacter(mot) {
-    const helloWorld = getLatinCharacterList(mot);
+    const helloWorld = getLatinCharacterList(mot.toUpperCase());
     console.log(helloWorld);
     const latinTable = [];
     for (i = 0; i < helloWorld.length; i++) {
-        latinTable.push(latinToMorse[helloWorld[i]]);
+        if (helloWorld[i] == " ") {
+            latinTable.push("/");
+        }
+        else if (helloWorld[i] in latinToMorse)
+            latinTable.push(latinToMorse[helloWorld[i]]);
     }
     return latinTable;
 }
 
-const traduction = translateLatinCharacter("HELLO/WORLD");
+//gérer les espaces entre chaque lettre
+//join le mot total à la fin
+
+const traduction = translateLatinCharacter("Bonjour Moussa");
 console.log(traduction);
 
 
@@ -90,10 +97,15 @@ function translateMorseCharacter(mot) {
     console.log(separationMorse);
     const morseTable = [];
     for (i = 0; i < separationMorse.length; i++) {
-        morseTable.push(morseToLatin[separationMorse[i]]);
+        if (separationMorse[i] == "/") {
+            morseTable.push("/");
+        }
+        else if (separationMorse[i] in morseToLatin) {
+            morseTable.push(morseToLatin[separationMorse[i]]);
+        }
     }
     return morseTable;
 }
 
-const tradMorse = translateMorseCharacter("- --- -- .- - .");
+const tradMorse = translateMorseCharacter("... .- .-.. ..- -  / .-.. . ...  / -.-. --- .--. .- .. -. ...");
 console.log(tradMorse);
