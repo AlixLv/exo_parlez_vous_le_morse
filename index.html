@@ -12,15 +12,23 @@
     <h1>Parlez-vous le morse ?</h1>
 
     <h2>Traducteur français - morse</h2>
-    <section>
+    <section id="morsesection">
         <label for="frenchToMorse">Entrez un mot en français : </label>
         <input type="text" id="frenchToMorse" name="frenchToMorse" size="40">
+        <button type="button" onclick="traduireEnMorse()">Traduire</button>
     </section>
 
     <h2>Traducteur morse - français</h2>
-    <section>
+    <section id="francais-section">
         <label for="morseToFrench">Entrez un mot en morse : </label>
         <input type="text" id="morseToFrench" name="morseToFrench" size="40">
+        <button type="button" onclick="traduireEnFrancais()">Traduire</button>
+    </section>
+
+    <h2>Résultat</h2>
+    <section id="resultat-section">
+        <label for="resultat">Traduction : </label>
+        <input type="text" id="resultat" name="resultat" size="60">
     </section>
 
     <script src="script2.js"></script>
