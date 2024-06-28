@@ -56,6 +56,8 @@ const morseToLatin = {
     '....': "H"
 }
 
+//pas de dictionnaire en JS, mais en Python ! En JS c'est un objet
+
 function getLatinCharacterList(texte) {
     let separationLatin = texte.split("");
     return separationLatin;
@@ -67,8 +69,8 @@ function translateLatinCharacter(mot) {
     console.log(helloWorld);
     const latinTable = [];
     for (i = 0; i < helloWorld.length; i++) {
-        if (helloWorld[i] == " ") {
-            latinTable.push("/");
+        if (helloWorld[i] == " " || helloWorld[i] == "!" || helloWorld[i] == "?") {
+            latinTable.push(helloWorld[i]);
         }
         else if (helloWorld[i] in latinToMorse)
             latinTable.push(latinToMorse[helloWorld[i]]);
@@ -79,11 +81,8 @@ function translateLatinCharacter(mot) {
 //gérer les espaces entre chaque lettre
 //join le mot total à la fin
 
-const traduction = translateLatinCharacter("Bonjour Moussa");
-console.log(traduction);
-
-
-
+//const traduction = translateLatinCharacter("Bonjour Moussa !");
+//console.log(traduction);
 
 
 function getMorseCharacterList(texte) {
@@ -109,3 +108,18 @@ function translateMorseCharacter(mot) {
 
 const tradMorse = translateMorseCharacter("... .- .-.. ..- -  / .-.. . ...  / -.-. --- .--. .- .. -. ...");
 console.log(tradMorse);
+
+//interaction avec HTML
+function traduireEnMorse() {
+    const frenchToMorseInput = document.querySelector('#frenchToMorse').value;
+    console.log(translateLatinCharacter(frenchToMorseInput));
+
+    document.querySelector('#resultat').value = translateLatinCharacter(frenchToMorseInput);
+}
+
+function traduireEnFrancais() {
+    const morseToFrenchInput = document.querySelector('#morseToFrench').value;
+    console.log(translateMorseCharacter(morseToFrenchInput));
+
+    document.querySelector('#resultat').value = translateMorseCharacter(morseToFrenchInput);
+}
